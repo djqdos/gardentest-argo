@@ -2,7 +2,7 @@ apiVersion: rabbitmq.com/v1beta1
 kind: RabbitmqCluster
 metadata:
   name: production-rabbitmqcluster
-  namespace: development
+  namespace: gardentest-rich
 spec:
   replicas: 1
   resources:

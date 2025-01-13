@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mssql-deployment
-  namespace: development
+  namespace: gardentest-rich
   labels:
     app: mssql
 spec:
@@ -62,7 +62,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: mssql-volume
-  namespace: development
+  namespace: gardentest-rich
 spec:
   capacity:
     storage: 1Gi
@@ -79,7 +79,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mssql-claim
-  namespace: development
+  namespace: gardentest-rich
     # annotations:
     #   volume.beta.kubernetes.io/storage-class: managed-premium # <!-- this is azure, what storage class for local kubernetes
 spec:
