@@ -51,7 +51,7 @@ spec:
               value: "ChangeMe!"
           volumeMounts:
               - name: mssql-volume
-                mountPath: /var/opt/mssql
+                mountPath: /var/opt/mssql/data
       volumes:
         - name: mssql-volume
           persistentVolumeClaim:
