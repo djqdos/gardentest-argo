@@ -1,0 +1,91 @@
+# Actual SQL Server
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mssql-deployment
+  namespace: development
+  labels:
+    app: mssql
+spec:
+  selector:
+    matchLabels:
+      app: mssql
+  replicas: 1
+  strategy:
+    type: Recreate  #RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: mssql
+    spec:
+        
+        #volumes:
+        #  - name: mssql-data
+        #    hostPath:
+        #      path: /tmp
+        #      type: Directory
+        #  - name: mssql-claim
+        #    persistentVolumeClaim:
+        #      claimName: mssql-data
+        
+        
+        
+        
+      terminationGracePeriodSeconds: 10
+      securityContext:
+        fsGroup: 1000
+        
+      hostNetwork: true
+      containers:
+        - name: mssql
+          image: 'mcr.microsoft.com/mssql/server:2022-latest'
+          ports:
+            - name: bob
+              containerPort: 1433
+          env:
+            - name: MSSQL_PID
+              value: "Developer"
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: MSSQL_SA_PASSWORD
+              value: "ChangeMe!"
+          volumeMounts:
+              - name: mssql-volume
+                mountPath: /var/opt/mssql
+      volumes:
+        - name: mssql-volume
+          persistentVolumeClaim:
+            claimName: mssql-claim
+---
+# Persistent Volume          
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mssql-volume
+  namespace: development
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: hostpath
+  hostPath:
+    path: "/mnt/data"
+
+
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mssql-claim
+  namespace: development
+    # annotations:
+    #   volume.beta.kubernetes.io/storage-class: managed-premium # <!-- this is azure, what storage class for local kubernetes
+spec:
+  storageClassName: hostpath
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi   
