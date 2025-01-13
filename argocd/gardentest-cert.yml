@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ${project.name}-cert
+  namespace: ${project.name}-${var.userNamespace}
+spec:
+  secretName: ${project.name}-tls-secret
+  issuerRef:
+    name: ${project.name}-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - ${var.baseHostname}
+    - web.${var.baseHostname}
+    - consumer.${var.baseHostname}        
