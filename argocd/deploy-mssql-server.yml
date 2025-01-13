@@ -33,7 +33,7 @@ spec:
         
       terminationGracePeriodSeconds: 10
       securityContext:
-        fsGroup: 1000
+        fsGroup: 10001
         
       hostNetwork: true
       containers:
