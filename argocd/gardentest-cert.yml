@@ -1,14 +1,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: ${project.name}-cert
-  namespace: ${project.name}-${var.userNamespace}
+  name: gardentest-cert
+  namespace: gardentest-rich
 spec:
-  secretName: ${project.name}-tls-secret
+  secretName: gardentest-tls-secret
   issuerRef:
-    name: ${project.name}-clusterissuer
+    name: gardentest-clusterissuer
     kind: ClusterIssuer
   dnsNames:
-    - ${var.baseHostname}
-    - web.${var.baseHostname}
-    - consumer.${var.baseHostname}        
+    - web.gardentest.dev
+    - consumer.gardentest.dev
