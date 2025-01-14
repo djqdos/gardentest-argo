@@ -43,8 +43,8 @@ spec:
   type: ClusterIP
   ports:
     - name: webportal-svc
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 80
       protocol: TCP
   selector:
     app: webportal
