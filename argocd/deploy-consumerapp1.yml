@@ -1,13 +1,22 @@
-apiVersion: apps/v1
+apiVersion: v1
 kind: Deployment
 metadata:
   name: consumerapp
   namespace: gardentest-rich
 spec:
   replicas: 1
+  metadata:
+    labels:
+      app: consumerapp
   imagePullSecrets:
   - name: myrepo
-  containers:
-    - name: consumerapp1-build
+  
+  template:
+    metadata:
+      labels:
+        app: cosnumerapp
+    spec:
+      containers:
+        - name: consumerapp1-build:v-bald48d7f7
   
 
