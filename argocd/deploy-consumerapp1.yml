@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumerapp
+  namespace: gardentest-rich
+spec:
+  replicas: 1
+  imagePullSecrets:
+  - name: myrepo
+  containers:
+    - name: consumerapp1-build
+  
+
