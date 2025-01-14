@@ -1,22 +1,22 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: consumerapp
   namespace: gardentest-rich
 spec:
   replicas: 1
-  metadata:
-    labels:
-      app: consumerapp
-  imagePullSecrets:
-  - name: myrepo
-  
+  selector:
+    matchLabels:
+      app: consumerapp1
   template:
     metadata:
       labels:
-        app: cosnumerapp
+        app: consumerapp1
     spec:
       containers:
-        - name: consumerapp1-build:v-bald48d7f7
+      - image: reg.qdos.ddns.net/gardentest-rich/consumerapp1-build:v-bald48d7f7
+        name: consumerapp1
+      imagePullSecrets:
+      - name: myrepo
   
 
