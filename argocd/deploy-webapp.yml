@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: consumerapp
+  name: webportal
   namespace: gardentest-rich
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: consumerapp1
+      app: webportal
   template:
     metadata:
       labels:
-        app: consumerapp1
+        app: webportal
     spec:
       containers:
-      - image: reg.qdos.ddns.net/gardentest-rich/consumerapp1-build:v-ba1d48d7f7
-        name: consumerapp1
+      - image: reg.qdos.ddns.net/gardentest-rich/web-build:v-deff4dd961
+        name: webportal
         command:
           - dotnet
-          - ConsumerApp1.dll
+          - GardenTest.Web.dll
         ports:
           - name: http
-            containerPort: 8080
+            containerPort: 80
             protocol: TCP
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
           - name: ASPNETCORE_URLS
-            value: http://+8080        
+            value: http://+80         
       imagePullSecrets:
       - name: myrepo
   
@@ -37,15 +37,15 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: consumerapp1
-  name: consumerportal-svc
+    app: webportal
+  name: webportal-svc
 spec:
   type: ClusterIP
   ports:
-    - name: consumerportal-svc
+    - name: webportal-svc
       port: 8080
       targetPort: 8080
       protocol: TCP
   selector:
-    app: consumerapp1
+    app: webportal
 
