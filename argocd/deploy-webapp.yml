@@ -14,7 +14,7 @@ spec:
         app: webportal
     spec:
       containers:
-      - image: reg.qdos.ddns.net/gardentest-rich/web-build:v-deff4dd961
+      - image: reg.qdos.ddns.net/gardentest-rich/web-build:v-86c84d6751
         name: webportal
         command:
           - dotnet
