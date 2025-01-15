@@ -14,7 +14,7 @@ spec:
         app: consumerapp1
     spec:
       containers:
-      - image: reg.qdos.ddns.net/gardentest-rich/consumerapp1-build:v-4076c12a8c
+      - image: reg.qdos.ddns.net/gardentest-rich/consumerapp1-build:v-d9436dc255
         name: consumerapp1
         command:
           - dotnet
