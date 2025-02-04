@@ -3,6 +3,9 @@ kind: RabbitmqCluster
 metadata:
   name: production-rabbitmqcluster
   namespace: gardentest-rich
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 spec:
   replicas: 1
   resources:

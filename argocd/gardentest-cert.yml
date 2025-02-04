@@ -3,6 +3,9 @@ kind: Certificate
 metadata:
   name: gardentest-cert
   namespace: gardentest-rich
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  
 spec:
   secretName: gardentest-tls-secret
   issuerRef:
