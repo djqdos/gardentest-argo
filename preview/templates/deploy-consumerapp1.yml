@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - image: reg.qdos.ddns.net/gardentest-rich/consumerapp1-build:v-d9436dc255
+        name: {{ .Values.name }}
+        command:
+          - dotnet
+          - ConsumerApp1.dll
+        ports:
+          - name: http
+            containerPort: 8080
+            protocol: TCP
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development
+          - name: ASPNETCORE_URLS
+            value: http://+8080        
+      imagePullSecrets:
+      - name: myrepo
+  
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ .Values.name }}
+  name: consumerportal-svc
+spec:
+  type: ClusterIP
+  ports:
+    - name: consumerportal-svc
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: {{ .Values.name }}
+
