@@ -1,0 +1,21 @@
+#apiVersion: cert-manager.io/v1
+#kind: Certificate
+#metadata:
+#  name: test-ca
+#  namespace: gardentest-rich
+#spec:
+#  isCA: true
+#  commonName: test-ca
+#  subject:
+#    organizations:
+#      - Test Inc
+#    orgaizationalUnits:
+#      - something
+#  secretName: test-ca-secret
+#  privateKey:
+#    algorithm: ECDSA
+#    size: 256
+#  issuerRef:
+#    name: selfsigned-issuer
+#    kind: issuer
+#    group: cert-manager.io
