@@ -1,8 +1,8 @@
-#apiVersion: cert-manager.io/v1
-#kind: issuer
-#metadata:
-#  name: test-ca-issuer
-#  namespace: gardentest-rich
-#spec:
-#  ca:
-#    secretName: test-ca-secret
+apiVersion: cert-manager.io/v1
+kind: issuer
+metadata:
+  name: test-ca-issuer
+  namespace: gardentest-rich
+spec:
+  ca:
+    secretName: test-ca-secret

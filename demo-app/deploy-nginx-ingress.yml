@@ -37,11 +37,11 @@ spec:
                 name: consumerportal-svc
                 port:
                   number: 80                      
-#'tls:
-#    - hosts:
-#      - web.gardentest.dev
-#      - consumer.gardentest.dev
-#      secretName: gardentest-tls-secret
+  tls:
+    - hosts:
+      - web.gardentest.dev
+      - consumer.gardentest.dev
+      secretName: test-server-tls
             
             
             
