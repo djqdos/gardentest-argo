@@ -43,6 +43,7 @@ metadata:
   labels:
     app: webportal
   name: webportal-svc
+  namespace: gardentest-rich
 spec:
   type: ClusterIP
   ports:

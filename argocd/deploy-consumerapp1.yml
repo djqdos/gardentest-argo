@@ -43,6 +43,7 @@ metadata:
   labels:
     app: consumerapp1
   name: consumerportal-svc
+  namespace: gardentest-rich
 spec:
   type: ClusterIP
   ports:
