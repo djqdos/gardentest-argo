@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "2"
 spec:
-  secretName: gardentest-tls-secret
+  secretName: gardentest-ca-secret
   issuerRef:
     name: gardentest-clusterissuer
     kind: ClusterIssuer
