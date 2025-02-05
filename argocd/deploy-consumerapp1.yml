@@ -25,13 +25,13 @@ spec:
           - ConsumerApp1.dll
         ports:
           - name: http
-            containerPort: 8080
+            containerPort: 80
             protocol: TCP
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
           - name: ASPNETCORE_URLS
-            value: http://+8080        
+            value: http://+80      
       imagePullSecrets:
       - name: myrepo
   
@@ -48,8 +48,8 @@ spec:
   type: ClusterIP
   ports:
     - name: consumerportal-svc
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 80
       protocol: TCP
   selector:
     app: consumerapp1
