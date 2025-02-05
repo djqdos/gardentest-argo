@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webportal
+  namespace: gardentest-rich
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "1"
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webportal
+  template:
+    metadata:
+      labels:
+        app: webportal
+    spec:
+      containers:
+      - image: reg.qdos.ddns.net/gardentest-rich/web-build:v-2b76e5226f
+        name: webportal
+        command:
+          - dotnet
+          - GardenTest.Web.dll
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development
+          - name: ASPNETCORE_URLS
+            value: http://+80         
+      imagePullSecrets:
+      - name: myrepo
+  
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: webportal
+  name: webportal-svc
+  namespace: gardentest-rich
+spec:
+  type: ClusterIP
+  ports:
+    - name: webportal-svc
+      port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: webportal
+
