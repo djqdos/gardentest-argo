@@ -45,7 +45,7 @@ metadata:
   name: consumerportal-svc
   namespace: gardentest-rich
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - name: consumerportal-svc
       port: 80
