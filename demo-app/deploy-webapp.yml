@@ -45,7 +45,7 @@ metadata:
   name: webportal-svc
   namespace: gardentest-rich
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - name: webportal-svc
       port: 80
