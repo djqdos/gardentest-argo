@@ -1,0 +1,9 @@
+/infrastructure/terraform/terraform.tfvars
+infrastructure/terraform/terraform.tfstate
+infrastructure/terraform/terraform.tfstate.backup
+infrastructure/terraform/.terraform/modules/modules.json
+infrastructure/terraform/.terraform/providers/registry.terraform.io/hashicorp/azurerm/4.17.0/windows_amd64/LICENSE.txt
+infrastructure/terraform/.terraform/providers/registry.terraform.io/hashicorp/azurerm/4.17.0/windows_amd64/terraform-provider-azurerm_v4.17.0_x5.exe
+infrastructure/terraform/.terraform/providers/registry.terraform.io/hashicorp/helm/2.17.0/windows_amd64/LICENSE.txt
+infrastructure/terraform/.terraform/providers/registry.terraform.io/hashicorp/helm/2.17.0/windows_amd64/terraform-provider-helm_v2.17.0_x5.exe
+infrastructure/terraform/.terraform.lock.hcl

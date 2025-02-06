@@ -16,3 +16,10 @@ module "kubernetes_cluster" {
   service_principal_id = var.client_id
   password             = var.client_secret
 }
+
+
+module "argocd" {
+  source = "./modules/argocd"
+  
+  depends_on = [module.kubernetes_cluster]
+}

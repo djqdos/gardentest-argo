@@ -6,11 +6,7 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~>4.0"
     }
-
-    #azuread = {
-    #  source = "hashicorp/azuread"
-    #  version = "~2.36.0"
-    #}
+   
   }
 }
 
@@ -23,4 +19,11 @@ provider "azurerm" {
   client_secret   = var.client_secret
 
   features {}
+}
+
+
+provider "helm" {
+	kubernetes {
+	  config_path = "~/.kube/config"
+	}
 }

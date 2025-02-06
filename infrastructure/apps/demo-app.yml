@@ -17,7 +17,7 @@ spec:
     path: "demo-app"
   destination:
     namespace: gardentest-rich
-    name: kind
+    name: "in-cluster"
   syncPolicy:
     automated:
       prune: true
