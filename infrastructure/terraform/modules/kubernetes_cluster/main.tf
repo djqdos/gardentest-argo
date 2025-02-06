@@ -19,10 +19,6 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 
   role_based_access_control_enabled = true
 
-  identity {
-    type = "SystemAssigned"
-  }
-
   network_profile {
     network_plugin = "kubenet"
     load_balancer_sku = "standard"
