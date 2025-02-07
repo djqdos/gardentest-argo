@@ -14,11 +14,9 @@ spec:
     repoURL: https://helm.releases.hashicorp.com
     chart: vault
     targetRevision: 'v0.29.1'
-    lifecycle:
-      postStart:
-        exec:
-          command: ["/bin/bash", "-c", "vault operator init"]
     helm:
+      valuesFiles:
+      - vault-files/vault-overrides.yml
       parameters:
         - name: installCRDs
           value: 'true'

@@ -1,0 +1,9 @@
+server:
+  postStart:
+    - sh
+    - -c
+    - |
+    sleep 10
+    vault operator init >> /tmp/init.txt
+    cat /tmp/init.txt | grep "Key " | awk '{print $NF}' | xargs -I{} vault operator unseal {}
+    rm /tmp/init.txt
