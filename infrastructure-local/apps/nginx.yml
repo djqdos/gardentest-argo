@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: nginx
-    targetRevision: 'v18.3.6'
+    targetRevision: '18.3.6'
     helm:
       parameters:
         - name: installCRDs
