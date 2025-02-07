@@ -16,7 +16,7 @@ spec:
     targetRevision: 'v0.29.1'
     helm:
       valuesFiles:
-      - vault-files/vault-overrides.yml
+      - vault-overrides.yml
       parameters:
         - name: installCRDs
           value: 'true'
