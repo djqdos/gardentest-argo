@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://helm.releases.hashicorp.com
     chart: vault
-    targetRevision: 'v0.4.0'
+    targetRevision: 'v0.29.1'
     helm:
       parameters:
         - name: installCRDs
