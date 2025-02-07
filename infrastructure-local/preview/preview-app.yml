@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: myapp-applicationset-previews
+  namespace: argocd
+spec:
+  generators:
+    - pullRequest:
+        github:
+          owner: djqdos
+          repo: "1"
+          tokenRef:
+            secretName: github-token
+            key: token
+  template:
+    metadata:
+      name: "myapp-{{branch}}-{{number}}"
+    spec:
+      syncPolicy:
+        automated:
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
+      source:
+        repoURL: "https://github.com/djqdos/gardentest-argo.gif"
+        targetRevision: "{{head_sha}}"

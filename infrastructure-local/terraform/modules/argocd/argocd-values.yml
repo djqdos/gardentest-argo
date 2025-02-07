@@ -1,0 +1,9 @@
+---
+global:
+  image:
+    tag: "latest"
+
+server:
+  extraArgs:
+    - --insecure
+
