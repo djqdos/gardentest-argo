@@ -1,52 +1,52 @@
-# #apiVersion: rabbitmq.com/v1beta1
-# #kind: RabbitmqCluster
-# #metadata:
-# #  name: production-rabbitmqcluster
-# #  namespace: gardentest-rich
-# #  annotations:
-# #    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-# #    argocd.argoproj.io/sync-wave: "1"
+#apiVersion: rabbitmq.com/v1beta1
+#kind: RabbitmqCluster
+#metadata:
+#  name: production-rabbitmqcluster
+#  namespace: gardentest-rich
+#  annotations:
+#    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#    argocd.argoproj.io/sync-wave: "1"
 
-# #spec:
-# #  replicas: 1
-# #  resources:
-# #    requests:
-# #      cpu: 500m
-# #      memory: 1Gi
-# #    limits:
-# #      cpu: 1
-# #      memory: 2Gi
-# #  rabbitmq:
-# #    additionalConfig: |
-# #      log.console.level = info
-# #      channel_max = 1700
-# #      default_user= guest 
-# #      default_pass = guest
-# #      default_user_tags.administrator = true
+#spec:
+#  replicas: 1
+#  resources:
+#    requests:
+#      cpu: 500m
+#      memory: 1Gi
+#    limits:
+#      cpu: 1
+#      memory: 2Gi
+#  rabbitmq:
+#    additionalConfig: |
+#      log.console.level = info
+#      channel_max = 1700
+#      default_user= guest 
+#      default_pass = guest
+#      default_user_tags.administrator = true
 
 
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: rabbitmq
-#   namespace: gardentest-rich
-#   finalizers:
-#   - resources-finalizer.argocd.argoproj.io
-# spec:
-#   project: default
-#   source:
-#     repoURL: https://charts.bitnami.com/bitnami
-#     chart: bitnami/rabbitmq
-#     helm:
-#       parameters:
-#         - name: installCRDs
-#           value: 'true'
-#   destination:
-#     namespace: gardentest-rich
-#     name: kind
-#   syncPolicy:
-#     automated: {}
-#     syncOptions:
-#       - CreateNamespace=true
-#       - ServerSideApply=true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rabbitmq
+  namespace: gardentest-rich
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: bitnami/rabbitmq
+    helm:
+      parameters:
+        - name: installCRDs
+          value: 'true'
+  destination:
+    namespace: gardentest-rich
+    name: kind
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
 
