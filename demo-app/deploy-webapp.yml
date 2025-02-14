@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "1"
-    "consul.hashicorp.com/content-inject": true
+    "consul.hashicorp.com/content-inject": "true"
 
 spec:
   replicas: 1
