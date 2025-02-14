@@ -1,7 +1,7 @@
-## Actual SQL Server
-#apiVersion: apps/v1
-#kind: Deployment
-#metadata:
+# # Actual SQL Server
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
 #  name: mssql-deployment
 #  namespace: gardentest-rich
 #  labels:
@@ -9,8 +9,8 @@
 #  annotations:
 #    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 #    argocd.argoproj.io/sync-wave: "1"
-#
-#spec:
+
+# spec:
 #  selector:
 #    matchLabels:
 #      app: mssql
@@ -22,7 +22,7 @@
 #      labels:
 #        app: mssql
 #    spec:
-#        
+       
 #        #volumes:
 #        #  - name: mssql-data
 #        #    hostPath:
@@ -31,14 +31,14 @@
 #        #  - name: mssql-claim
 #        #    persistentVolumeClaim:
 #        #      claimName: mssql-data
-#        
-#        
-#        
-#        
+       
+       
+       
+       
 #      terminationGracePeriodSeconds: 10
 #      securityContext:
 #        fsGroup: 10001
-#        
+       
 #      hostNetwork: true
 #      containers:
 #        - name: mssql
@@ -60,14 +60,14 @@
 #        - name: mssql-volume
 #          persistentVolumeClaim:
 #            claimName: mssql-claim
-#---
-## Persistent Volume          
-#apiVersion: v1
-#kind: PersistentVolume
-#metadata:
+# ---
+# # Persistent Volume          
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
 #  name: mssql-volume
 #  namespace: gardentest-rich
-#spec:
+# spec:
 #  capacity:
 #    storage: 1Gi
 #  accessModes:
@@ -75,18 +75,18 @@
 #  storageClassName: hostpath
 #  hostPath:
 #    path: "/mssql"
-#
-#
-#
-#---
-#apiVersion: v1
-#kind: PersistentVolumeClaim
-#metadata:
+
+
+
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
 #  name: mssql-claim
 #  namespace: gardentest-rich
 #    # annotations:
 #    #   volume.beta.kubernetes.io/storage-class: managed-premium # <!-- this is azure, what storage class for local kubernetes
-#spec:
+# spec:
 #  storageClassName: hostpath
 #  accessModes:
 #    - ReadWriteOnce
