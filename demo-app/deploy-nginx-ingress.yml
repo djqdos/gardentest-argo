@@ -1,47 +1,47 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: host-based-ingress
-#   namespace: gardentest-rich
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: host-based-ingress
+  namespace: gardentest-rich
   
-#   annotations:
-#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-#     argocd.argoproj.io/sync-wave: "3"
-#     cert-manager.io/issuer: test-ca-issuer
-#  #   kubernetes.io/ingress.class: "nginx"
-#  #         nginx.ingress.kubernetes.io/ssl-redirect: "false"
-#  #         nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-#  #         nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "3"
+    cert-manager.io/issuer: test-ca-issuer
+ #   kubernetes.io/ingress.class: "nginx"
+ #         nginx.ingress.kubernetes.io/ssl-redirect: "false"
+ #         nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+ #         nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
   
 
-# spec:
-#   ingressClassName: nginx
-#   rules:
-#     - host: web.gardentest.dev
-#       http:
-#         paths:
-#           - pathType: Prefix
-#             path: /
-#             backend:
-#               service:
-#                 name: webportal-svc
-#                 port:
-#                   number: 80           
-#     - host: consumer.gardentest.dev
-#       http:
-#         paths:
-#           - pathType: Prefix
-#             path: /
-#             backend:
-#               service:
-#                 name: consumerportal-svc
-#                 port:
-#                   number: 80                      
-#   tls:
-#     - hosts:
-#       - web.gardentest.dev
-#       - consumer.gardentest.dev
-#       secretName: test-server-tls
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: web.gardentest.dev
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: webportal-svc
+                port:
+                  number: 80           
+    - host: consumer.gardentest.dev
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: consumerportal-svc
+                port:
+                  number: 80                      
+  tls:
+    - hosts:
+      - web.gardentest.dev
+      - consumer.gardentest.dev
+      secretName: test-server-tls
             
             
             
