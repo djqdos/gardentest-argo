@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+  #finalizers:
+  #- resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "1"  
+spec:
+  project: default
+  source:
+    repoURL: https://helm.releases.hashicorp.com
+    chart: vault
+    targetRevision: 'v0.29.1'
+    helm:
+      valuesFiles:
+      - vault-overrides.yml
+      parameters:
+        - name: installCRDs
+          value: 'true'
+  destination:
+    namespace: vault
+    name: "in-cluster"
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
