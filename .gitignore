@@ -12,3 +12,7 @@ infrastructure/terraform/.terraform/providers/registry.terraform.io/hashicorp/az
 infrastructure/terraform/.terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.35.1/windows_amd64/LICENSE.txt
 infrastructure/terraform/.terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.35.1/windows_amd64/terraform-provider-kubernetes_v2.35.1_x5.exe
 infrastructure/terraform/.terraform.tfstate.lock.info
+/infrastructure/terraform-vault-sync-from-hashicorp/terraform.tfvars
+/infrastructure/terraform-vault-sync-from-hashicorp/terraform.tfstate
+/infrastructure/terraform-vault/terraform.tfvars
+/infrastructure/terraform-vault/*.tfstate
